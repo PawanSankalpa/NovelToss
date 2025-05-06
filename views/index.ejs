@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <title>NovelToss</title>
+  </head>
+  <body>
+    <h1>Bored? Looking for a book recomendation?</h1>
+
+    <form action="/" method="POST">
+      <select name="genre" id="form-select">
+        <option value="">Random Genre</option>
+        <option value="romance">Love stories</option>
+        <option value="mystery">Detective and crime books</option>
+        <option value="fantasy">Magical/fantastical stories</option>
+        <option value="science">General science books</option>
+        <option value="history">Historical books</option>
+        <option value="biography">Biographies and memoirs</option>
+        <option value="philosophy">Philosophical texts</option>
+        <option value="technology">Tech and computing</option>
+        <option value="health">Health and wellness</option>
+        <option value="travel">Travel guides and stories</option>
+        <option value="self-help">Self-improvement books</option>
+        <option value="poetry">Poetry collections</option>
+        <option value="horror">Horror and thriller books</option>
+        <option value="religion">Religious texts</option>
+      </select>
+      <button type="submit">Search for a Book</button>
+    </form>
+
+    <section id="info-card" class="info">
+      <article>
+        <% if (!locals.bookTitle){ %>
+        <h1>No books loaded, try again with a different genre</h1>
+        <%} %>
+        <div id="thumbnail">
+          <img src="<%= bookThumbnail %>" alt="Book cover" />
+        </div>
+        <div id="bookInfo">
+          <h2 id="title"><%= bookTitle %></h2>
+          <p id="description"><%= bookDescription %></p>
+          <p id="category">About: <%= bookGenre %></p>
+        </div>
+      </article>
+    </section>
+  </body>
+</html>
