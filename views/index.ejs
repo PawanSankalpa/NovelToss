@@ -9,6 +9,20 @@
   <body>
     <h1>Bored? Looking for a book recomendation?</h1>
 
+    <!-- loader div box -->
+    <div id="bookLoader" class="book-loader-container">
+        <div class="book">
+          <div class="book-cover"></div>
+          <div class="pages">
+            <div class="page"></div>
+            <div class="page"></div>
+            <div class="page"></div>
+            <div class="page"></div>
+          </div>
+        </div>
+        <div class="loading-text">The Book is...</div>
+      </div>
+
     <form action="/" method="POST">
       <select name="genre" id="form-select">
         <option value="">Random Genre</option>
@@ -45,5 +59,22 @@
         </div>
       </article>
     </section>
+
+    <!-- loader script -->
+    <script>
+        const form = document.querySelector("form");
+        const loader = document.getElementById("bookLoader"); // Now matches HTML
+        const infoCard = document.getElementById("info-card");
+  
+        form.addEventListener("submit", () => {
+          loader.style.display = "flex";
+          if (infoCard) infoCard.style.opacity = "0.5";
+        });
+        
+        window.addEventListener('load', () => {
+          loader.style.display = "none";
+          if (infoCard) infoCard.style.opacity = "1";
+        });
+      </script>
   </body>
 </html>

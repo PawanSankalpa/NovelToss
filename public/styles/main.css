@@ -305,4 +305,98 @@
     margin-bottom: 1rem;
   }
 
-  
+  /* Add this to your CSS */
+  .book-loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 39, 46, 0.9);
+    display: none; /* Start hidden */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+  }
+
+  .book {
+    width: 150px;
+    height: 200px;
+    position: relative;
+    perspective: 1000px;
+  }
+
+  .book-cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #6c5ce7, #00cec9);
+    border-radius: 5px 8px 8px 5px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transform-style: preserve-3d;
+    z-index: 10;
+  }
+
+  .pages {
+    position: absolute;
+    width: 95%;
+    height: 96%;
+    top: 2%;
+    left: 2%;
+    transform-style: preserve-3d;
+  }
+
+  .page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #2d3436;
+    transform-origin: left;
+    border-radius: 0 3px 3px 0;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .page:nth-child(1) { animation: pageTurn 0.1s infinite; }
+  .page:nth-child(2) { animation: pageTurn 0.1s infinite 0.1s; }
+  .page:nth-child(3) { animation: pageTurn 0.1s infinite 0.1s; }
+  .page:nth-child(4) { animation: pageTurn 0.1s infinite 0.1s; }
+
+  .loading-text {
+    color: #f5f6fa;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .loading-text::after {
+    content: "...";
+    position: absolute;
+    animation: dots 2s infinite steps(4);
+  }
+
+  @keyframes pageTurn {
+    0%, 25% { transform: rotateY(0); }
+    50%, 70% { transform: rotateY(-160deg); }
+    90%, 100% { transform: rotateY(-180deg); }
+  }
+
+  @keyframes dots {
+    0% { content: "."; }
+    20% { content: ".."; }
+    40% { content: "..."; }
+    60% { content: ""; }
+    80% { content: "."; }
+  }
+
+  @media (max-width: 768px) {
+    .book { width: 120px; height: 160px; }
+    .loading-text { font-size: 1rem; }
+  }
+
+  @media (max-width: 480px) {
+    .book { width: 100px; height: 140px; }
+    .loading-text { font-size: 0.9rem; margin-top: 1.5rem; }
+  }
