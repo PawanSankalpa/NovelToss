@@ -81,7 +81,9 @@ app.post("/", async(req, res) => {
 
     } catch(error) {
         console.error("Failed to make request: ", error.message);
-        req.status(500).send("Failed to fetch the activity. Please try again");
+        req.render("index.js", {
+            error: "No books that matches your genre."
+        })
     }
 });
 

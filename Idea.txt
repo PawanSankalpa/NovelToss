@@ -1,2 +1,2 @@
 This is about a novel recommendation website,
- that gives you recommendatoins according to your selected genre
+ that gives you recommendations according to your selected genre.
